@@ -58,7 +58,7 @@ extern DMA_HandleTypeDef hdma_usart2_rx;
 
 extern __IO uint8_t  cam_rx_buff[CAM_BUFF_LEN];
 extern __IO bool     cam_frame_flag;
-extern __IO uint8_t  cam_rx_count;  /* 本帧实际接收字节数（IDLE中断计算�? */
+extern __IO uint8_t  cam_rx_count;  /* 本帧实际接收字节数（IDLE中断计算�? */
 
 /* USER CODE END Private defines */
 

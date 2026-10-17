@@ -244,7 +244,7 @@ void USART2_IRQHandler(void)
 
     HAL_UART_DMAStop(&huart2);
 
-    /* 记录本帧实际接收到的字节数：缓冲区�?�长 - DMA 计数器剩�? */
+    /* 记录本帧实际接收到的字节数：缓冲区�?�长 - DMA 计数器剩�? */
     cam_rx_count = CAM_BUFF_LEN - (uint8_t)__HAL_DMA_GET_COUNTER(&hdma_usart2_rx);
 
     cam_frame_flag = true;

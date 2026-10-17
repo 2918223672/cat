@@ -1,21 +1,21 @@
 #include "ano.h"
 
-/* ï¿½ï¿½ï¿½ï¿½V7ï¿½ï¿½Î»ï¿½ï¿½Ð­ï¿½ï¿½	*/
-uint8_t Data_Buff[32] ={0XAA,0XFF,0XF1};		    /* ï¿½ï¿½Ê¾Ð­ï¿½ï¿½,F1ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½Ö¡ID */
-uint8_t Data_Sent[32] ={0XAA,0XFF,0XE2};	        /* E1ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½Ý¶ï¿½È¡ID */
-uint8_t Data_Check[12]={0XAA,0XFF,0X00};	        /* 00ï¿½ï¿½Ê¾Ð£ï¿½ï¿½Ö¡ */
+/* ÄäÃûV7ÉÏÎ»»úÐ­Òé	*/
+uint8_t Data_Buff[32] ={0XAA,0XFF,0XF1};		    /* ±íÊ¾Ð­Òé,F1±íÊ¾×ÔÓÉÖ¡ID */
+uint8_t Data_Sent[32] ={0XAA,0XFF,0XE2};	        /* E1±íÊ¾Êý¾Ý¶ÁÈ¡ID */
+uint8_t Data_Check[12]={0XAA,0XFF,0X00};	        /* 00±íÊ¾Ð£ÑéÖ¡ */
 
 uint8_t Data_Get[32];
 
 /**************************************************************************
-ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ü£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½ï¿½ï¿½ï¿½Æ²ï¿½ï¿½Îºï¿½ï¿½ï¿½
-ï¿½ï¿½Ú²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÍµÄ²ï¿½ï¿½ï¿½ï¿½ï¿½32Î»ï¿½ï¿½32Î»ï¿½ï¿½32Î»ï¿½ï¿½32Î»ï¿½ï¿½
-ï¿½ï¿½ï¿½ï¿½  Öµï¿½ï¿½ï¿½ï¿½
+º¯Êý¹¦ÄÜ£º·¢ËÍÉÏÎ»»ú»æÖÆ²¨ÐÎº¯Êý
+Èë¿Ú²ÎÊý£º·¢ËÍµÄ²ÎÊý£¨32Î»£¬32Î»£¬32Î»£¬32Î»£©
+·µ»Ø  Öµ£ºÎÞ
 **************************************************************************/
 void Data_send(int32_t _a,int32_t _b,int32_t _c,int32_t _d)
 {
-	uint8_t i,cnt=4;	/* ï¿½ï¿½ï¿½ï¿½ */
-	uint8_t sc=0,ac=0;	/* Ð£ï¿½ï¿½ */
+	uint8_t i,cnt=4;	/* ¼ÆÊý */
+	uint8_t sc=0,ac=0;	/* Ð£Ñé */
 	
 	Data_Buff[cnt++] = BYTE0(_a);
 	Data_Buff[cnt++] = BYTE1(_a);
@@ -40,7 +40,7 @@ void Data_send(int32_t _a,int32_t _b,int32_t _c,int32_t _d)
 
 	Data_Buff[3]=cnt-4;
 	
-	for(i=0;i<cnt;i++)	/* Ð£ï¿½ï¿½Î»ï¿½ï¿½ï¿½ï¿½ */
+	for(i=0;i<cnt;i++)	/* Ð£ÑéÎ»¼ÆËã */
 	{
 		sc+=Data_Buff[i];
 		ac+=sc;
@@ -53,9 +53,9 @@ void Data_send(int32_t _a,int32_t _b,int32_t _c,int32_t _d)
 }
 
 /**************************************************************************
-ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ü£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý£ï¿½ï¿½Ú²ï¿½ï¿½ï¿½ï¿½ï¿½
-ï¿½ï¿½Ú²ï¿½ï¿½ï¿½ï¿½ï¿½idï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-ï¿½ï¿½ï¿½ï¿½  Öµï¿½ï¿½ï¿½ï¿½
+º¯Êý¹¦ÄÜ£º·¢ËÍÊý¾Ý£¬ÄÚ²¿µ÷ÓÃ
+Èë¿Ú²ÎÊý£ºid£¬Êý¾Ý
+·µ»Ø  Öµ£ºÎÞ
 **************************************************************************/
 void Ano_SentPar(uint16_t id,int32_t data)
 {
@@ -72,7 +72,7 @@ void Ano_SentPar(uint16_t id,int32_t data)
     
     Data_Sent[3]=cnt-4;
     
-    for(i=0;i<cnt;i++)		/* Ð£ï¿½ï¿½Î»ï¿½ï¿½ï¿½ï¿½ */
+    for(i=0;i<cnt;i++)		/* Ð£ÑéÎ»¼ÆËã */
 	{
 		sc+=Data_Sent[i];
 		ac+=sc;
@@ -89,11 +89,11 @@ void Ano_SentPar(uint16_t id,int32_t data)
 }
 
 /**************************************************************************
-ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ü£ï¿½ï¿½ï¿½ï¿½Ø¸ï¿½ï¿½ï¿½Î»ï¿½ï¿½ï¿½ï¿½Ð£ï¿½ï¿½ï¿½ï¿½ï¿½Ý£ï¿½ï¿½ï¿½ï¿½Üµï¿½ï¿½ï¿½Î»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½Ê±Í¨ï¿½ï¿½Ê¹ï¿½Ã£ï¿½ï¿½Ú²ï¿½ï¿½ï¿½ï¿½ï¿½
-ï¿½ï¿½Ú²ï¿½ï¿½ï¿½ï¿½ï¿½idï¿½ï¿½ï¿½ï¿½Ð£ï¿½é£¬ï¿½ï¿½ï¿½ï¿½Ð£ï¿½ï¿½
-ï¿½ï¿½ï¿½ï¿½  Öµï¿½ï¿½ï¿½ï¿½
+º¯Êý¹¦ÄÜ£º·µ»Ø¸øÉÏÎ»»úµÄÐ£ÑéÊý¾Ý£¬½ÓÊÜµ½ÉÏÎ»»úÊý¾ÝÐ´ÈëÊ±Í¨ÐÅÊ¹ÓÃ£¬ÄÚ²¿µ÷ÓÃ
+Èë¿Ú²ÎÊý£ºid£¬ºÍÐ£Ñé£¬¸½¼ÓÐ£Ñé
+·µ»Ø  Öµ£ºÎÞ
 **************************************************************************/
-void Ano_SentCheck(uint8_t id,uint8_t _sc,uint8_t _ac)  /* Ð£ï¿½ï¿½Ö¡ */
+void Ano_SentCheck(uint8_t id,uint8_t _sc,uint8_t _ac)  /* Ð£ÑéÖ¡ */
 {
     uint8_t cnt=4,i=0,sc=0,ac=0;
     
@@ -103,7 +103,7 @@ void Ano_SentCheck(uint8_t id,uint8_t _sc,uint8_t _ac)  /* Ð£ï¿½ï¿½Ö¡ */
     
     Data_Check[3]=cnt-4;
     
-    for(i=0;i<cnt;i++)		/* Ð£ï¿½ï¿½Î»ï¿½ï¿½ï¿½ï¿½ */
+    for(i=0;i<cnt;i++)		/* Ð£ÑéÎ»¼ÆËã */
 	{
 		sc+=Data_Check[i];
 		ac+=sc;
@@ -120,13 +120,13 @@ void Ano_SentCheck(uint8_t id,uint8_t _sc,uint8_t _ac)  /* Ð£ï¿½ï¿½Ö¡ */
 }
 
 /**************************************************************************
-ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ü£ï¿½ï¿½ï¿½ï¿½ï¿½Ð­ï¿½ï¿½ï¿½ï¿½ï¿½Ý½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-ï¿½ï¿½Ú²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý°ï¿½
-id   ï¿½ï¿½ ï¿½ï¿½1    2   3   4
-ï¿½ï¿½    ï¿½ï¿½ï¿½ï¿½KP   KI  KD  num
-ï¿½ï¿½ ï¿½ï¿½ Öµï¿½ï¿½ï¿½ï¿½
+º¯Êý¹¦ÄÜ£ºÄäÃûÐ­ÒéÊý¾Ý½âÎöº¯Êý
+Èë¿Ú²ÎÊý£ºÊý¾Ý°ü
+id   ºÅ £º1    2   3   4
+²Î    Êý£ºKP   KI  KD  num
+·µ »Ø Öµ£ºÎÞ
 **************************************************************************/
-void Ano_Anl(uint8_t *Data_Pack)          /* ï¿½ï¿½ï¿½Ý½ï¿½ï¿½ï¿½ */
+void Ano_Anl(uint8_t *Data_Pack)          /* Êý¾Ý½âÎö */
 {
     uint8_t sc = 0,ac = 0;
     
@@ -143,14 +143,14 @@ void Ano_Anl(uint8_t *Data_Pack)          /* ï¿½ï¿½ï¿½Ý½ï¿½ï¿½ï¿½ */
     if(Data_Pack[2] == 0xE1) {
       uint16_t id = Data_Pack[4] + ((uint16_t)Data_Pack[5]<<8);
       switch(id) {
-          case 1:  Ano_SentPar(id, *(int32_t *)&left_pid.kp);     break;  // ï¿½ï¿½ï¿½ï¿½ Kp
-          case 2:  Ano_SentPar(id, *(int32_t *)&left_pid.ki);     break;  // ï¿½ï¿½ï¿½ï¿½ Ki
-          case 3:  Ano_SentPar(id, *(int32_t *)&left_pid.kd);     break;  // ï¿½ï¿½ï¿½ï¿½ Kd
-          case 4:  Ano_SentPar(id, *(int32_t *)&left_pid.target); break;  // ï¿½ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½
-          case 5:  Ano_SentPar(id, *(int32_t *)&right_pid.kp);    break;  // ï¿½ï¿½ï¿½ï¿½ Kp
-          case 6:  Ano_SentPar(id, *(int32_t *)&right_pid.ki);    break;  // ï¿½ï¿½ï¿½ï¿½ Ki
-          case 7:  Ano_SentPar(id, *(int32_t *)&right_pid.kd);    break;  // ï¿½ï¿½ï¿½ï¿½ Kd
-          case 8:  Ano_SentPar(id, *(int32_t *)&right_pid.target);break;  // ï¿½ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½
+          case 1:  Ano_SentPar(id, *(int32_t *)&left_pid.kp);     break;  // ¶Á×ó Kp
+          case 2:  Ano_SentPar(id, *(int32_t *)&left_pid.ki);     break;  // ¶Á×ó Ki
+          case 3:  Ano_SentPar(id, *(int32_t *)&left_pid.kd);     break;  // ¶Á×ó Kd
+          case 4:  Ano_SentPar(id, *(int32_t *)&left_pid.target); break;  // ¶Á×óÄ¿±ê
+          case 5:  Ano_SentPar(id, *(int32_t *)&right_pid.kp);    break;  // ¶ÁÓÒ Kp
+          case 6:  Ano_SentPar(id, *(int32_t *)&right_pid.ki);    break;  // ¶ÁÓÒ Ki
+          case 7:  Ano_SentPar(id, *(int32_t *)&right_pid.kd);    break;  // ¶ÁÓÒ Kd
+          case 8:  Ano_SentPar(id, *(int32_t *)&right_pid.target);break;  // ¶ÁÓÒÄ¿±ê
           default: Ano_SentPar(id, 0); break;
       }
     }
@@ -168,17 +168,17 @@ void Ano_Anl(uint8_t *Data_Pack)          /* ï¿½ï¿½ï¿½Ý½ï¿½ï¿½ï¿½ */
           case 8:  right_pid.target = *(float *)(&Data_Pack[6]);break;
       }
     }
-    Ano_SentCheck(Data_Pack[2],Data_Pack[Data_Pack[3]+4],Data_Pack[Data_Pack[3]+5]); /* ï¿½ï¿½ï¿½ï¿½Ð£ï¿½ï¿½ */
+    Ano_SentCheck(Data_Pack[2],Data_Pack[Data_Pack[3]+4],Data_Pack[Data_Pack[3]+5]); /* ·µ»ØÐ£Ñé */
 }
 
 /**************************************************************************
-ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ü£ï¿½ï¿½ï¿½ï¿½ï¿½Ð­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð£ï¿½ï¿½
-ï¿½ï¿½Ú²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õµï¿½ï¿½ï¿½Ò»Ö¡ï¿½ï¿½ï¿½ï¿½
-ï¿½ï¿½ï¿½ï¿½  Öµï¿½ï¿½ï¿½ï¿½
+º¯Êý¹¦ÄÜ£ºÄäÃûÐ­ÒéÊý¾ÝÐ£Ñé
+Èë¿Ú²ÎÊý£ºÊÕµ½µÄÒ»Ö¡Êý¾Ý
+·µ»Ø  Öµ£ºÎÞ
 **************************************************************************/
 void Ano_GetByte(uint8_t data)
 {
-    static uint8_t sta=0,datalen=0,datacnt=0;      /* Ö¡ï¿½ï¿½ï¿½È£ï¿½ï¿½ï¿½ï¿½Õµï¿½ï¿½ï¿½ï¿½ï¿½ */ 
+    static uint8_t sta=0,datalen=0,datacnt=0;      /* Ö¡³¤¶È£¬½ÓÊÕµ½³¤¶È */ 
     
     if(sta==0)
     {
@@ -189,7 +189,7 @@ void Ano_GetByte(uint8_t data)
         if(data==0xAA)       /* Ö¡Í· */
             sta=1;
     }
-    else if(sta==1)          /* ï¿½ï¿½Ö· */
+    else if(sta==1)          /* µØÖ· */
     {
         Data_Get[1]=data;
         sta=2;
@@ -199,13 +199,13 @@ void Ano_GetByte(uint8_t data)
         Data_Get[2]=data;
         sta=3;
     }
-    else if(sta==3)          /* ï¿½ï¿½ï¿½Ý³ï¿½ï¿½ï¿½ */
+    else if(sta==3)          /* Êý¾Ý³¤¶È */
     {
         sta=4;
         Data_Get[3]=data;
         datalen=data;
     }
-    else if(sta==4)         /* ï¿½ï¿½ï¿½Ý»ï¿½ï¿½ï¿½ */
+    else if(sta==4)         /* Êý¾Ý»º´æ */
     {
         Data_Get[4+datacnt++]=data;
         if(datacnt >= datalen)
@@ -213,17 +213,17 @@ void Ano_GetByte(uint8_t data)
             sta=5;
         }
     }
-    else if(sta==5)         /* ï¿½ï¿½Ð£ï¿½ï¿½ */
+    else if(sta==5)         /* ºÍÐ£Ñé */
     {
         Data_Get[4+datacnt++]=data;
         sta=6;
     }
-    else if(sta==6)         /* ï¿½ï¿½ï¿½ï¿½Ð£ï¿½ï¿½ */
+    else if(sta==6)         /* ¸½¼ÓÐ£Ñé */
     {
         sta=0;
         Data_Get[4+datacnt++]=data;
         
-        Ano_Anl(Data_Get);  /* ï¿½ï¿½ï¿½Ý½ï¿½ï¿½ï¿½ */
+        Ano_Anl(Data_Get);  /* Êý¾Ý½âÎö */
     }     
 }
 

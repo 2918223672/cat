@@ -1,4 +1,4 @@
-// TFT 专锟矫碉拷锟斤拷锟斤拷锟斤拷 (锟斤拷锟斤拷锟姐法锟脚伙拷)
+// TFT 专用点阵数据 (抖动算法优化)
 #define GIF_FRAME_COUNT 29
 static const unsigned char gif_frame0[] = {
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,

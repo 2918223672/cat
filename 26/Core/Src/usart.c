@@ -439,6 +439,6 @@ int fputc(int ch, FILE *f)
 
 void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size)
 {
-    // JY901S removed ï¿½? UART5 now used for ZDT stepper motor
+    // JY901S removed â€? UART5 now used for ZDT stepper motor
 }
 /* USER CODE END 1 */
